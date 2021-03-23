@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=\, initial-scale=1.0">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
     <title>Document</title>
 </head>
 <body>
@@ -17,7 +19,33 @@
         <input id=txtPassword type="text">
     </div>
     <div>
-        <button>Dang Nhap</button>
+        <button id="btnDangNhap">Dang Nhap</button>
     </div>
 </body>
+    
 </html>
+<script>
+
+    $(document).on("click", "#btnDangNhap", function(){
+        let txtUserName = $("#txtUserName").val();
+        let txtPassword = $("#txtPassword").val();
+        console.log({ txtUserName, txtPassword });
+        if ( txtUserName != "admin" && txtPassword != 'admin' ){
+            toastr.error("Dang nhap that bai", "Thong bao");
+        }else{
+            toastr.success("Dang nhap thanh cong", "Thong bao");
+            // setTimeout(function(){
+            //     window.location.href = "http://127.0.0.1:5500/public/index.html"
+            // }, 5000)
+        }
+        // $.ajax({
+        //     url: "localhost:5000/users/login",
+        //     method: "POST",
+        //     data: { txtUserName, txtPassword },
+        //     success: resp => {
+        //         console.log({ resp });
+        //     }
+        // })
+    })
+
+</script>
